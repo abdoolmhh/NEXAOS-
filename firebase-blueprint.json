@@ -1,0 +1,38 @@
+{
+  "entities": {
+    "Business": {
+      "title": "Business",
+      "description": "A retail business profile.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the business." },
+        "type": { "type": "string", "description": "The type of business (e.g. Pharmacy)." },
+        "location": { "type": "string", "description": "The physical location." },
+        "phone": { "type": "string", "description": "Contact phone number." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." }
+      },
+      "required": ["name", "type", "location", "phone"]
+    },
+    "InventoryItem": {
+      "title": "Inventory Item",
+      "description": "An item in the store's inventory.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Item name." },
+        "price": { "type": "number", "description": "Item price in Naira." },
+        "stock": { "type": "number", "description": "Current stock quantity." }
+      },
+      "required": ["name", "price", "stock"]
+    }
+  },
+  "firestore": {
+    "/businesses/{userId}": {
+      "schema": "Business",
+      "description": "Stores business profile information."
+    },
+    "/businesses/{userId}/inventory/{itemId}": {
+      "schema": "InventoryItem",
+      "description": "Stores inventory items for a specific business."
+    }
+  }
+}
